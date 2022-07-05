@@ -44,6 +44,22 @@ function mcwGymFitnessScripts() {
 
 add_action('wp_enqueue_scripts', 'mcwGymFitnessScripts');
 
+// Enable Feature Image Upload and Other Stuff
+
+function mcwGymFitnessSetup() {
+    
+    // register new image sizes
+
+    add_image_size('square', 350, 350, true);  // install the regenerate thumbnails plugin to regenerate sizes for all images already uploaded
+    add_image_size('portrait', 350, 724, true);
+    add_image_size('box', 400, 375, true);
+    add_image_size('mediumSize', 700, 400, true);
+    add_image_size('blog', 966, 644, true);
+
+    add_theme_support('post-thumbnails'); // enables feature image
+}
+add_action('after_setup_theme', 'mcwGymFitnessSetup'); // when the theme is activated and ready
+
 
 
 
