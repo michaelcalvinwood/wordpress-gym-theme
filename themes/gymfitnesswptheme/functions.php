@@ -61,5 +61,19 @@ function mcwGymFitnessSetup() {
 add_action('after_setup_theme', 'mcwGymFitnessSetup'); // when the theme is activated and ready
 
 
+// Creates a Widget Zone
 
+function mcwGymFitnessWidgets() {
+    // widgets don't have to be in the sidebar, but they are still registered using the register_sidebar function. Note: id must be unique for each widget you register.
+    register_sidebar([
+        'name' => 'Sidebar',
+        'id' => 'sidebar',
+        'before_widget' => '<div class="widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>'
+    ]);
+
+}
+add_action('widgets_init', 'mcwGymFitnessWidgets');
 
