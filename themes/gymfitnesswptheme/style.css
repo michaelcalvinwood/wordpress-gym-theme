@@ -134,12 +134,34 @@ img {
     border-bottom: 3px solid var(--primary);
 }
 
+/** Mobile Menu **/
+@media (min-width: 768px) {
+    .slicknav_menu {
+        display: none;
+    }
+}
+
 /** Footer **/
 .site-footer {
     padding: 2rem 0;
     border-top: 2px solid var(--lightGray);
 }
-
+.slicknav_btn {
+    background-color: var(--primary);
+}
+.slicknav_nav a {
+    font-size: 2.4rem;
+    text-align: center;
+    font-family: var(--mainFont);
+}
+.slicknav_nav a:hover {
+    background: transparent;
+    color: var(--primary);
+    
+}
+.slicknav_menu {
+    background-color: var(--darkGray);
+}
 .footer-menu {
     display: none;
 }
