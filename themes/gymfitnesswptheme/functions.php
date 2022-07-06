@@ -1,4 +1,9 @@
 <?php
+
+// Link to the queries file
+
+require get_template_directory() . '/includes/queries.php';
+
 // Create the menu
 
 function mcwGymFitnessMenus() {
