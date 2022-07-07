@@ -326,3 +326,49 @@ img {
     }
 }
 
+/* Single Class Post */
+p.content-class {
+    font-weight: 700;
+    font-family: var(--secondaryFont);
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+/* Sidebar */
+
+.sidebar a {
+    color: var(--black);
+}
+/* 
+    We used the class widget in 'before-widget' so every widget has this property in the sidebar
+    Therefore, the following css will separate each widget's display in the sidebar by 2rem
+*/
+.sidebar .widget {
+    margin-bottom: 2rem;
+}
+/*
+    Notice the flex design pattern of X% and (100-X%)-Yrem
+*/
+.sidebar-class {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.sidebar .sidebar-widget-image {
+    flex: 0 0 30%;
+}
+.sidebar .class-content {
+    flex: 0 0 calc(70% - 2rem);
+}
+.sidebar .class-content h3 {
+    font-size: 3rem;
+    color: var(--primary);
+}
+.sidebar .class-content p {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+}
+.sidebar .classes-title {
+    margin-bottom: 2rem;
+}

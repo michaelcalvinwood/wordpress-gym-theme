@@ -53,7 +53,10 @@ add_action('wp_enqueue_scripts', 'mcwGymFitnessScripts');
 
 function mcwGymFitnessSetup() {
     
-    // register new image sizes
+    /* register new image sizes
+        These image sizes are in addition to the default sizes already included by wordpress (thumbnail, medium, large).
+        To see/edit the default sizes go to: settings->media.
+    */
 
     add_image_size('square', 350, 350, true);  // install the regenerate thumbnails plugin to regenerate sizes for all images already uploaded
     add_image_size('portrait', 350, 724, true);
@@ -75,7 +78,7 @@ function mcwGymFitnessWidgets() {
         'id' => 'sidebar',
         'before_widget' => '<div class="widget">',
         'after_widget' => '</div>',
-        'before_title' => '<h3>',
+        'before_title' => '<h3 class="text-primary">',
         'after_title' => '</h3>'
     ]);
 
