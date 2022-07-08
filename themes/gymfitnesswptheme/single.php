@@ -1,9 +1,18 @@
+<?php
+    /* 
+        single.php is the default template for post type: posts
+    */
+?>
+
 <?php get_header(); ?>
 
+<main class="container page section with-sidebar">
+        <div class="page-content">
+            <?php get_template_part('template-parts/page', 'loop'); ?>
+        </div>
+        
+            <?php get_sidebar(); ?>
+    </main>
 
-<?php while (have_posts() ): the_post(); ?>
-    <h1><?php the_title(); ?></h1>
 
-    <?php the_content(); ?>
-
-<?php endwhile; ?>
+<?php get_footer(); ?>
