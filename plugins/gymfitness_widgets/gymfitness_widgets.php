@@ -31,6 +31,11 @@ class mcwGymFitnessClassesWidget extends WP_Widget {
 		);
 	}
 
+	/*
+		The front-end portion of the widget is what is shown on the webpage itself.
+		The back-end portion is what is displayed inside the admin panel for the user to customize the widget.
+	*/
+
 	/**
 	 * Front-end display of widget.
 	 *
@@ -41,7 +46,7 @@ class mcwGymFitnessClassesWidget extends WP_Widget {
 	 */
 
 		/*
-			The widget arguments (such as before_widget and after_widget) were set in our functions.php file:
+			The widget $args (such as before_widget and after_widget) were set in our functions.php file:
 				 register_sidebar([
 					'name' => 'Sidebar',
 					'id' => 'sidebar',
@@ -51,16 +56,29 @@ class mcwGymFitnessClassesWidget extends WP_Widget {
 					'after_title' => '</h3>'
 				]);
 			Notice how the widget echoes the content of before_widget and after_widget
+			The widget $instance is the values from the database (see backend below).
+			In the backend form below, we set the title and quantity instances.
 		*/
 	public function widget( $args, $instance ) {
-		echo $args['before_widget']; ?>
+		echo $args['before_widget']; 
 
-		<h2 class="text-primary text-center classes-title">Our Classes</h2>
+		// To understand $args and $instance show the following
+		// echo "<pre>";
+		// 	var_dump($instance);
+		// 	var_dump($args);
+		// echo "</pre>";
+
+		?>
+
+		<h2 class="text-primary text-center classes-title">
+			<?php echo esc_html($instance['title']) ?>
+		</h2>
 
 		<ul class="sidebar-classes-list">
 			<?php
 				$args = [
-					'post_type' => 'gymfitness_classes', 
+					'post_type' => 'gymfitness_classes',
+					'posts_per_page' => $instance['quantity'],
 					/*
 						if you want to blog use post_type 'post', if you want to query webpages use post_type 'page', etc.
 						You can use posts_per_page to limit the number of posts displayed
@@ -106,6 +124,7 @@ class mcwGymFitnessClassesWidget extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+
 	/**
 	 * Back-end widget form.
 	 *
@@ -114,11 +133,39 @@ class mcwGymFitnessClassesWidget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
+		/*
+			This form allows the admin to set two values on the widget: Title and Number of Classes to Display.
+			IMPORTANT: If you add any more inputs, make sure to include them in the update function below so that the value changes when the user updates the widget with their settings.
+		*/
+
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'New title', 'text_domain' );
+
+		$quantity = ! empty( $instance['quanityt'] ) ? $instance['quantity'] : esc_html__( '5', 'text_domain' );
+
 		?>
 		<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'text_domain' ); ?></label> 
-		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<label 
+				for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+				<?php esc_attr_e( 'Title:', 'text_domain' ); ?>
+			</label> 
+			<input 
+				class="widefat" 
+				id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" 
+				name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" 
+				type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+
+		<p>
+			<label 
+				for="<?php echo esc_attr( $this->get_field_id( 'quantity' ) ); ?>">
+				<?php esc_attr_e( 'Number of Classes to Display:', 'text_domain' ); ?>
+			</label> 
+			<input 
+				class="widefat" 
+				id="<?php echo esc_attr( $this->get_field_id( 'quantity' ) ); ?>" 
+				name="<?php echo esc_attr( $this->get_field_name( 'quantity' ) ); ?>" 
+				type="number" value="<?php echo esc_attr( $quantity ); ?>"
+				min="0">
 		</p>
 		<?php 
 	}
@@ -136,6 +183,8 @@ class mcwGymFitnessClassesWidget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+
+		$instance['quantity'] = ( ! empty( $new_instance['quantity'] ) ) ? sanitize_text_field( $new_instance['quantity'] ) : '';
 
 		return $instance;
 	}

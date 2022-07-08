@@ -32,6 +32,11 @@ function mcwGymFitnessScripts() {
 
    wp_enqueue_style('slicknavcss', get_template_directory_uri() . '/css/slicknav.min.css', [], '1.0.10');
 
+    // if the the page is using the gallery.php template then add the lightbox css
+    if (basename(get_page_template()) === 'gallery.php'):
+        wp_enqueue_style('lightboxcss', get_template_directory_uri() . '/css/lightbox.min.css', [], '2.11.2');
+    endif;
+
    // Main Stylesheet
 
    wp_enqueue_style('style', get_stylesheet_uri(), ['normalize', 'googlefont'], '1.0.0');
@@ -43,6 +48,11 @@ function mcwGymFitnessScripts() {
    wp_enqueue_script('jquery');
 
    wp_enqueue_script('slicknavjs', get_template_directory_uri() . '/js/jquery.slicknav.min.js', ['jquery'], '1.0.10', true);
+
+   // if the the page is using the gallery.php template then add the lightbox js
+   if (basename(get_page_template()) === 'gallery.php'):
+        wp_enqueue_script('lightboxjs', get_template_directory_uri() . '/js/lightbox.min.js', ['jquery'], '2.11.2', true);
+   endif;
 
    wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js', ['jquery'], true);
 }
