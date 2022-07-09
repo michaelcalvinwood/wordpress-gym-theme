@@ -95,3 +95,26 @@ function mcwGymFitnessWidgets() {
 }
 add_action('widgets_init', 'mcwGymFitnessWidgets');
 
+// Display the hero image on background of the front-page
+
+function mcwGymFitnessHeroImage() {
+    // The homepage ID can be retrieved from /wp-admin/options.php
+    // search for page_on_front
+    // in this installation the number is 8
+    $frontPageId = get_option('page_on_front');
+    $imageId = get_field('hero_image', $frontPageId);
+    $imageUrl = $imageId['url'];
+
+    // create a faux stylesheet
+
+    wp_register_style('custom', false);
+    wp_enqueue_style('custom');
+
+    $featuredImageCss = "
+        body.home .site-header {
+            background-image: linear-gradient( rgba(0,0,0, 0.75), rgba(0,0,0, 0.75) ), url($imageUrl);
+    ";
+    wp_add_inline_style('custom', $featuredImageCss);
+
+}
+add_action('init', 'mcwGymFitnessHeroImage');

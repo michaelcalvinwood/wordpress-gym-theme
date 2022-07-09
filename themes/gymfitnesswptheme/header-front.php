@@ -26,7 +26,17 @@
                 ?>
 
             </div><!--.navigation-bar-->
+
+            <div class="tagline text-center">
+                <h1>
+                    <?php the_field('hero_tagline'); ?>
+                </h1>
+                <p>
+                    <?php the_field('hero_content'); ?>
+                </p>
+            </div>
         </div><!--.container-->
 
         
     </header>
+
