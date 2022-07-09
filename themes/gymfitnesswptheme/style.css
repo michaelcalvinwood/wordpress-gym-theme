@@ -327,12 +327,51 @@ img {
         font-size: 2rem;
     }
 }
+
 .card .card-content .date-published {
-    color: var(--white);
+    color: var(--black);
 }
+
+@media (min-width: 768px) {
+    .card .card-content .date-published {
+        color: var(--white);
+    }
+}
+
 .card .card-content .date-published span {
     color: var(--primary);
 }
+
+/* Categories */
+.post-categories {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+@media (min-width: 768px) {
+    .post-categories {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;   
+        margin-top: 0;   
+        z-index:2;  
+    }
+}
+.post-categories li {
+    margin-right: 2rem;
+}
+.post-categories li:last-of-type {
+    margin-right: 0;
+}
+.post-categories a {
+    border-radius: .5rem;
+    background-color: var(--primary);
+    padding: .5rem 2rem;
+    font-size: 2.2rem;
+    font-family: var(--mainFont);
+    color: var(--white);
+}
+
 
 /* Single Class Post */
 p.content-class {
@@ -420,4 +459,58 @@ p.content-class {
         grid-column: 2 / 3;
         grid-row: 2 / 4;
     }
+}
+
+/* Contact Form */
+
+.wpcf7-form p {
+    display: flex;
+    flex-wrap: wrap;
+}
+.wpcf7-form p label,
+.wpcf7-form p span {
+    flex: 0 0 100%;
+}
+.wpcf7-form p span {
+    display: flex;
+    flex-wrap: wrap;
+}
+.wpcf7-form-control {
+    flex: 0 0 100%;
+    border: 1px solid var(--lightGray);
+    padding: 1rem;
+}
+.wpcf7-submit {
+    background-color: var(--primary);
+    font-size: 2rem;
+    font-family: var(--mainFont);
+    color: var(--white);
+    border-radius: .5rem;
+    padding: 1.2rem;
+    cursor: pointer;
+}
+div.wpcf7-response-output {
+    background-color: red;
+    color: var(--white);
+    border: none !important;
+    border-radius: .5rem;
+    text-align: center;
+}
+div.wpcf7 .ajax-loader {
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 4rem;
+    width: 4rem;
+}
+.wpcf7-not-valid-tip {
+    background-color: red;
+    color: var(--white);
+    padding: 1rem;
+}
+div.wpcfy-mail-sent-ok {
+    background-color: green;
+    color: var(--white);
+    padding: 1rem;
+    text-align: center;   
+    border-radius: .5rem;
 }
