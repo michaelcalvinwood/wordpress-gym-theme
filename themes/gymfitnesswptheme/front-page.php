@@ -31,6 +31,21 @@
             </ul>
         </section>
 
+        <section class="classes-homepage">
+            <div class="container section">
+                <h2 class="text-primary text-center">
+                    Our Classes
+                </h2>
+                <?php mcwGymFitnessClassesList(4); ?>
+
+                <div class="button-container">
+                    <a class="button" href="<?php echo get_permalink( get_page_by_title('Classes')); ?>" >
+                        View All Classes
+                    </a>
+                </div>
+            </div>
+        </section>
+
     <?php endwhile; ?>
 
 <?php get_footer(); ?>
