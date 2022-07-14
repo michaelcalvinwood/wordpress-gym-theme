@@ -94,6 +94,31 @@ img {
     padding: 5rem 0;
 }
 
+/** Buttons **/
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+.button {
+    display: block;
+    background-color: var(--primary);
+    flex: 1;
+    text-align: center;
+    color: var(--white);
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2rem;
+}
+@media (min-width: 768px) {
+    .button {
+        flex: 0 0 auto;
+    }
+}
+
+
 /** Site Header **/
 .logo {
     display: flex;
