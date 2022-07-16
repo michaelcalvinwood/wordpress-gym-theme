@@ -137,6 +137,10 @@ img {
    
 }
 
+.classes-homepage {
+    background-color: var(--lightGray);
+}
+
 /** Front Header **/
 body.home .site-header{
     height: 100vh;
