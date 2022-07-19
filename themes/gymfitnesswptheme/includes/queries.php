@@ -34,12 +34,12 @@ function mcwGymFitnessClassesList( $number = -1 ) { ?>
 
 // Displays the Instructors
 
-function mcsGymFitnessInstructorsList() { ?>
+function mcsGymFitnessInstructorsList($postsPerPage = 20) { ?>
     <ul class="instructor-list">
         <?php
             $args = [
                 'post_type' => 'instructors',
-                'posts_per_page' => 20
+                'posts_per_page' => $postsPerPage
             ];
             $instructors = new WP_Query($args);
 
@@ -54,9 +54,14 @@ function mcsGymFitnessInstructorsList() { ?>
                         <div class="specialty">
                             <?php
                                 $specialty = get_field('specialty');
-                                foreach($specialty as $s): ?>
+                                foreach($specialty as $s): 
+                                    $loc = strpos($s, ':');
+                                    $s = substr($s, $loc + 1);
+                                ?>
                                     <span class="tag">
-                                        <?php echo $s; ?>
+                                        <?php 
+                                            echo $s; 
+                                        ?>
                                     </span>
 
                                 <?php endforeach; ?>

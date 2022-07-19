@@ -704,3 +704,13 @@ div.wpcfy-mail-sent-ok {
     height: 350px;
     object-fit: cover;
 }
+
+.instructor .tag {
+    background-color: var(--primary);
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+    color: white;
+    font-family: var(--mainFont);
+    font-size: 2rem;
+    margin-right: .5rem;
+}
