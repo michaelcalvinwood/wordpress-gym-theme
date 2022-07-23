@@ -32,6 +32,8 @@ function mcwGymFitnessClassesList( $number = -1 ) { ?>
     </ul>
 <?php }
 
+
+
 // Displays the Instructors
 
 function mcsGymFitnessInstructorsList($postsPerPage = 20) { ?>
